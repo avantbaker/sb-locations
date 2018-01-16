@@ -1,0 +1,259 @@
+// //////////////////////////
+// MIXINS - VAEMERGENCY
+// //////////////////////////
+
+// Breakponts
+
+@mixin desktop-super {
+  @media all and (min-width: 1400px) {
+    @content;
+  }
+}
+
+@mixin landscape {
+  @media all and (min-width: 901px) {
+    @content;
+  }
+}
+
+@mixin vertical {
+  @media all and (max-width: 900px) {
+    @content;
+  }
+}
+
+@mixin nav-flip {
+  @media all and (max-width: 1100px) { //1025
+    @content;
+  }
+}
+
+@mixin desktop-large {
+  @media all and (min-width: 1321px) {
+    @content;
+  }
+}
+
+@mixin desktop-small {
+  @media all and (max-width: 1160px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media all and (min-width: 1026px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media all and (max-width: 1025px) {
+    @content;
+  }
+}
+
+@mixin tablet-small {
+  @media all and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media all and (max-width: 560px) {
+    @content;
+  }
+}
+
+@mixin mobile-medium {
+  @media all and (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin mobile-small {
+  @media all and (max-width: 360px) {
+    @content;
+  }
+}
+
+// Mixins
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+  background-clip: padding-box;
+}
+
+@mixin border-top-radius($radius) {
+  -webkit-border-top-right-radius: $radius;
+  border-top-right-radius: $radius;
+  -webkit-border-top-left-radius: $radius;
+  border-top-left-radius: $radius;
+  background-clip: padding-box;
+}
+@mixin border-right-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+  -webkit-border-top-right-radius: $radius;
+  border-top-right-radius: $radius;
+  background-clip: padding-box;
+}
+@mixin border-bottom-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+  -webkit-border-bottom-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+  background-clip: padding-box;
+}
+@mixin border-left-radius($radius) {
+  -webkit-border-bottom-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+  -webkit-border-top-left-radius: $radius;
+  border-top-left-radius: $radius;
+  background-clip: padding-box;
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+@mixin truncate-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin vertical-line {
+  border-left: thick solid #ff0000;
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+	content: "";
+    display: block;
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .grid-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
+  }
+}
+
+@mixin background-opacity($color, $opacity: 0.6) {
+    background: $color; /* The Fallback */
+    background: rgba($color, $opacity);
+}
+
+@mixin image-fill {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	transform: translate(-50%, -50%);
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes $animation-name {
+    @content;
+  }
+  @-moz-keyframes $animation-name {
+    @content;
+  }
+  @-ms-keyframes $animation-name {
+    @content;
+  }
+  @-o-keyframes $animation-name {
+    @content;
+  }
+  @keyframes $animation-name {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+// Tint a color
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+// Shade a color
+
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+// Clearfix
+
+%clearfix {
+  *zoom: 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+
+// background styles
+
+@mixin bubble-icon {
+	width: 90px;
+	height: 90px;
+	background-repeat: repeat-y;
+	background-position: center center;
+	background-image: url('../images/callout-flyout-icon-bg.png');
+	@include font-size(47px);
+	color: #fff;
+	text-align: center;
+	line-height: 100px;
+	@include border-radius(50%);
+}
+
+

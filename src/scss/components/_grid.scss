@@ -1,0 +1,316 @@
+// ///////////////////////////////
+// GRID
+// //////////////////////////////
+
+
+// //////////////////
+// 1. Variables
+// /////////////////
+
+// Padding
+
+$col-initial-padding: 24px;
+$col-middle-padding: 12px;
+
+
+// Dimensions
+
+$max-width-desktop-lg: 1280px;
+$max-width-desktop: 1000px;
+$max-width-tablet: 680px;
+$container-width-slim: 940px;
+$nav-height: 100px;
+
+
+// ///////////////////////////
+// 2. Floated Box Model Grid
+// /////////////////////////
+
+.container {
+	@extend %clearfix;
+	width: 100%;
+	margin: 0 auto;
+	text-align: left;
+
+	@include landscape {
+		max-width: $max-width-desktop;
+	}
+
+	@include desktop-large {
+		max-width: $max-width-desktop-lg;
+	}
+
+	@include vertical {
+		max-width: $max-width-tablet;
+	}
+
+	&.center-text {
+		text-align: center;
+	}
+
+	&.slim-container {
+
+		@include landscape {
+			max-width: $container-width-slim;
+		}
+	}
+
+	&.no-max-width {
+		max-width: none;
+	}
+}
+
+.col {
+	float: left;
+	width: 100%;
+	min-height: 1px;
+	padding: 0 $col-middle-padding;
+
+	@include vertical {
+			padding: $col-middle-padding 0;
+		}
+
+	&:first-of-type {
+		padding: 0 $col-initial-padding 0 0;
+
+		@include vertical {
+			padding: $col-middle-padding 0;
+		}
+	}
+
+	&:last-of-type {
+		padding: 0 0 0 $col-initial-padding;
+
+		@include vertical {
+			padding: $col-middle-padding 0;
+		}
+	}
+
+	&.full {
+		width: 100%;
+	}
+
+
+	&.four-fifths {
+
+		@include landscape {
+			width: 80%;
+		}
+	}
+
+	&.three-fourths {
+
+		@include landscape {
+			width: 75%;
+		}
+	}
+
+
+	&.three-fifths {
+
+		@include landscape {
+			width: 60%;
+		}
+	}
+
+
+	&.two-thirds {
+
+		@include landscape {
+			width: 66.666%;
+		}
+	}
+
+	&.half {
+
+		@include landscape {
+			width: 50%;
+		}
+	}
+
+
+	&.two-fifths {
+
+		@include landscape {
+			width: 40%;
+		}
+	}
+
+	&.one-third {
+
+		@include landscape {
+			width: 33.333%;
+		}
+	}
+
+	&.one-fourth {
+
+		@include landscape {
+			width: 25%;
+		}
+	}
+
+
+	&.one-fifth {
+
+		@include landscape {
+			width: 20%;
+		}
+	}
+
+	&.mobile-half {
+
+		@include vertical {
+			width: 50%;
+			padding: $col-middle-padding;
+		}
+	}
+
+	&.right-col {
+		float: right;
+	}
+
+	&.reverse-order {
+
+		&:first-of-type {
+			padding: 0 0 0 $col-initial-padding;
+
+			@include vertical {
+				padding: $col-middle-padding 0;
+			}
+		}
+
+		&:last-of-type {
+			padding: 0 $col-initial-padding 0 0;
+
+			@include vertical {
+				padding: $col-middle-padding 0;
+			}
+		}
+	}
+
+	&.mobile-remove-padding {
+
+		@include vertical {
+			padding: 0px;
+
+			&:first-of-type {
+				padding-top: 12px;
+			}
+
+			&:last-of-type {
+				padding-bottom: 12px;
+			}
+		}
+	}
+
+	&.links-sidebar {
+
+		@media all and (min-width: 901px) and (max-width: 1320px) {
+			width: 33.333%;
+		}
+	}
+
+	&.links-main {
+
+		@include landscape {
+			min-height: 600px;
+		}
+
+		@media all and (min-width: 901px) and (max-width: 1320px) {
+			width: 66%;
+		}
+	}
+
+}
+
+// 3. Flexbox Grid
+
+.flex-row {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.flex-col {
+	box-sizing: border-box;
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 auto;
+	flex: 0 0 auto;
+	-ms-flex-preferred-size: 100%;
+	flex-basis: 100%;
+	max-width: 100%;
+
+	&.flex-one-fourth {
+
+		@include landscape {
+			-ms-flex-preferred-size: 25%;
+			flex-basis: 25%;
+			max-width: 25%;
+		}
+	}
+
+	&.flex-one-third {
+
+		@include landscape {
+			-ms-flex-preferred-size: 33.33333%;
+			flex-basis: 33.33333%;
+			max-width: 33.33333%;
+		}
+	}
+
+	&.flex-half {
+
+		@include landscape {
+			-ms-flex-preferred-size: 50%;
+			flex-basis: 50%;
+			max-width: 50%;
+		}
+	}
+
+	&.flex-two-thirds {
+
+		@include landscape {
+			-ms-flex-preferred-size: 66.6666%;
+			flex-basis: 66.6666%;
+			max-width: 66.6666%;
+		}
+	}
+
+	&.flex-three-fourths {
+
+		@include landscape {
+			-ms-flex-preferred-size: 75%;
+			flex-basis: 75%;
+			max-width: 75%;
+		}
+	}
+}
+
+.top-xs {
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.middle-xs {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.bottom-xs {
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}

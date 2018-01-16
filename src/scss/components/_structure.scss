@@ -1,0 +1,93 @@
+// ///////////////////////////////
+// PAGE STRUCTURE
+// //////////////////////////////
+
+// //////////////////
+// 1. Variables
+// /////////////////
+
+$section-rl-padding: 48px;
+$section-tb-padding: 64px;
+$section-rl-padding-mobile: 24px;
+$section-tb-padding-mobile: 48px;
+$header-rl-padding: 24px;
+$header-tb-padding: 8px;
+
+
+// //////////////////
+// 2. Elements
+// /////////////////
+
+body, html {
+
+	&.no-scroll {
+		position: fixed !important;
+		width: 100%;
+	}
+
+}
+
+body {
+	font-family: $body-text;
+	font-size: 100%;
+	color: $gray;
+}
+
+header, footer, main {
+	@extend %clearfix;
+	width: 100%;
+}
+
+main, footer {
+	position: relative;
+}
+
+section {
+	width: 100%;
+	padding: $section-tb-padding $section-rl-padding;
+
+	@include tablet-small {
+		padding: $section-tb-padding-mobile $section-rl-padding-mobile;
+	}
+
+	&.section-whitespace-remove-top {
+		padding-top: 0;
+	}
+
+	&.section-whitespace-remove-bottom {
+		padding-bottom: 0;
+	}
+
+	&.no-pad {
+		padding: 0;
+	}
+
+	&.no-pad-left-right {
+		padding-right: 0;
+		padding-left: 0;
+	}
+}
+
+
+// Add color
+
+section,
+aside,
+div {
+
+	&.white {
+		background: #fff;
+	}
+
+	&.off-white {
+		background: $white;
+	}
+
+	&.ltgray {
+		background: $ltgray;
+	}
+
+	&.yellow {
+		background: $yellow;
+	}
+}

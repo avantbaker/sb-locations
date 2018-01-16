@@ -1,0 +1,57 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+* {
+  margin:0;
+  padding:0;
+}
+
+body {
+  font: 100% $main-font-name;
+}
+
+
+button, a {
+  cursor: pointer;
+  outline:none;
+}
+
+.-clear:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+// ///////////////////////////////
+// GLOBAL VARIABLES
+// //////////////////////////////
+
+// Colors
+
+$white: #f8f8f8;
+$dkblack: #222;
+$black: #414141;
+$gray: #404040;
+$mdgray: #e8e8e8;
+$ltgray: #f4f4f4;
+$dkgray: #555;
+$section-gray: #f8f8f8;
+$offwhite: #f8f8f8;
+$red: #e2231a;
+$yellow: #f3e7b3;
+$gold: #afa67e;
+$green: #4eb457;
+$twitter-blue: #4099ff;
+$facebook-blue: #3b5998;
+$youtube-red: #bb0000;
+$flickr-pink: #ff0084;
+
+$main-header-text: 'Brandon Display';
+$header-text: 'Brandon', sans-serif;
+$body-text: 'Brandon', sans-serif;
